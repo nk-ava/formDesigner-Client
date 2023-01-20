@@ -1,0 +1,48 @@
+<template>
+	<el-form size="small" :model="itemConf" label-width="100px" style="margin-right: 10%">
+		<el-form-item label="ID">
+			<el-input v-model="itemConf.id" disabled></el-input>
+		</el-form-item>
+		<el-form-item label="链接文字">
+			<el-input v-model="itemConf.child"></el-input>
+		</el-form-item>
+		<el-form-item label="类型">
+			<el-select  v-model="itemConf.type">
+				<el-option label="primary" value="primary"></el-option>
+				<el-option label="success" value="success"></el-option>
+				<el-option label="warning" value="warning"></el-option>
+				<el-option label="danger" value="danger"></el-option>
+				<el-option label="info" value="info"></el-option>
+			</el-select>
+		</el-form-item>
+		<el-form-item label="下划线">
+			<el-switch v-model="itemConf.underline"></el-switch>
+		</el-form-item>
+		<el-form-item label="是否禁用">
+			<el-switch v-model="itemConf.disabled"></el-switch>
+		</el-form-item>
+		<el-form-item label="链接地址">
+			<el-input v-model="itemConf.href"></el-input>
+		</el-form-item>
+		<el-form-item label="图标">
+			<el-input v-model="itemConf.icon" placeholder="请选择图标">
+				<el-button slot="append" icon="el-icon-picture"></el-button>
+			</el-input>
+		</el-form-item>
+	</el-form>
+</template>
+
+<script>
+	export default {
+		name: 'linkConf',
+		props: {
+			itemConf: {
+				type: Object,
+				default: () => ({})
+			}
+		}
+	}
+</script>
+
+<style>
+</style>

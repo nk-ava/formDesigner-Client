@@ -9,6 +9,7 @@ import router from "./router/index.js";
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
+Vue.prototype.host = "http://192.168.0.7:8848";
 Vue.use(Element);
 
 new Vue({

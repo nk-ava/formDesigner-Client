@@ -4,11 +4,12 @@
 			<el-form-item :label="model.showLabel?model.title:''" :required="model.required" style="margin-bottom:5px;"
 				:label-width="model.showLabel?'80px':'10px'" class="form-item">
 				<render v-if="!look" :confs="model" @input="changeValue(model,$event)" />
-				<render v-if="look" :confs="model"/>
+				<render v-if="look" :confs="model" />
 			</el-form-item>
 		</template>
 		<el-row type="flex" justify="center" v-if="showSub">
-			<el-button type="primary" @click="submitForm">提交</el-button>
+			<el-button v-if="save" type="primary" @click="submitForm">提交</el-button>
+			<el-button v-if="!save" type="primary" @click="updateForm">提交</el-button>
 		</el-row>
 	</el-form>
 </template>
@@ -30,17 +31,25 @@
 				type: Array,
 				default: []
 			},
-			tempId:{
-				default:null,
-				required:false
+			tempId: {
+				default: null,
+				required: false
 			},
 			showSub: {
 				type: Boolean,
 				default: false
 			},
-			look:{
-				type:Boolean,
-				default:false
+			look: {
+				type: Boolean,
+				default: false
+			},
+			formId: {
+				type: String,
+				default: null
+			},
+			save: {
+				type: Boolean,
+				default: true
 			}
 		},
 		methods: {
@@ -58,7 +67,7 @@
 				};
 				if (this.tempId != null) data.tempId = this.tempId;
 				this.$axios({
-					url: "http://127.0.0.1:8848/example/saveForm",
+					url: `${this.host}/example/saveForm`,
 					method: "post",
 					headers: {
 						'Content-Type': "application/json"
@@ -72,6 +81,37 @@
 						duration: 1000
 					});
 					else this.$confirm(res.message).then();
+				}).catch(err => {
+					loader.close();
+					this.$confirm(err.toString()).then();
+				})
+			},
+			updateForm() {
+				let loader = this.$loading({
+					text: '正在保存',
+					target: '.preview_sub'
+				});
+				let data = {
+					formId: this.formId,
+					subTime: (new Date).getTime(),
+					list: this.list
+				}
+				this.$axios({
+					url: `${this.host}/example/updateFormById`,
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					data: data
+				}).then(res => {
+					loader.close();
+					res = res.data;
+					if (res.code == 200) {
+						this.$message.success({
+							message: "成功",
+							duration: 1000
+						});
+					} else this.$confirm(res.message).then();
 				}).catch(err => {
 					loader.close();
 					this.$confirm(err.toString()).then();

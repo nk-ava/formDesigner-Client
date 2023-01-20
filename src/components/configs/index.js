@@ -5,7 +5,12 @@ const components = [
 	'select',
 	'slider',
 	'switch',
-	'textarea'
+	'textarea',
+	'link',
+	'inputNumber',
+	'time',
+	'date',
+	'rate'
 ]
 
 let cpms = [];

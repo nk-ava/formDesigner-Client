@@ -1,0 +1,17 @@
+export let inputNumber={
+	id:'',
+	compIcon:'inputNumber',
+	compName:'计数器',
+	ele:'el-input-number',
+	title:'计数器',
+	showLabel:true,
+	min:0,
+	max:100,
+	step:1,
+	size:'large',
+	disabled:false,
+	precision:0,
+	controls:true,
+	'controls-position':'right',
+	required:false,
+}

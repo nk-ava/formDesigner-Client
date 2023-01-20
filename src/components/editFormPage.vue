@@ -3,9 +3,7 @@
 		<div class="left-div">
 			<!-- 顶部菜单栏 -->
 			<div class="action-bar">
-				<img src="../assets/logo.png" class="logo" />
-				<i class="el-icon-plus"></i>
-				<img src="../assets/element.png" class="ele-logo" />
+				<el-button icon="el-icon-s-home" type="text" class="home" @click="goBack">返回</el-button>
 				<el-button icon="el-icon-view" type="text" @click="preview">
 					预览
 				</el-button>
@@ -89,12 +87,19 @@
 				type: Array,
 				default: () => ([]),
 				required: false
+			},
+			tempId: {
+				type: String,
+				default: null,
+				required: false
 			}
 		},
 		methods: {
 			save() {
-				this.tempName = "temp_" + (new Date).getTime();
-				this.showSave = true;
+				if (this.tempId == null) {
+					this.tempName = "temp_" + (new Date).getTime();
+					this.showSave = true;
+				} else this.saveTemp();
 			},
 			removeAll() {
 				this.$confirm('此操作将清空整个表单,是否继续?').then(() => {
@@ -116,36 +121,66 @@
 			preview() {
 				this.showPreview = true;
 			},
+			goBack(){
+				this.$router.back();
+			},
 			saveTemp() {
 				let loader = this.$loading({
 					text: "正在保存",
 					target: ".loadingDiv"
 				});
-				this.$axios({
-					url: "http://127.0.0.1:8848/example/saveTemp",
-					headers: {
-						'Content-Type': "application/json"
-					},
-					method: 'post',
-					data: {
-						name: this.tempName,
-						saveTime: (new Date).getTime(),
-						list: this.list
-					}
-				}).then(res => {
-					loader.close();
-					res = res.data;
-					if (res.code == 200) {
-						this.showSave = false;
-						this.$message.success({
-							message: "成功",
-							duration: 1000
-						});
-					} else this.$confirm(res.message).then();
-				}).catch(err => {
-					loader.close();
-					this.$confirm(err.toString()).then();
-				})
+				if (this.tempId == null) {
+					this.$axios({
+						url: `${this.host}/example/saveTemp`,
+						headers: {
+							'Content-Type': "application/json"
+						},
+						method: 'post',
+						data: {
+							name: this.tempName,
+							saveTime: (new Date).getTime(),
+							list: this.list
+						}
+					}).then(res => {
+						loader.close();
+						res = res.data;
+						if (res.code == 200) {
+							this.showSave = false;
+							this.$message.success({
+								message: "成功",
+								duration: 1000
+							});
+						} else this.$confirm(res.message).then();
+					}).catch(err => {
+						loader.close();
+						this.$confirm(err.toString()).then();
+					})
+				} else {
+					this.$axios({
+						url: `${this.host}/example/updateTempById`,
+						headers: {
+							'Content-Type': "application/json"
+						},
+						method: 'post',
+						data: {
+							tempId:this.tempId,
+							saveTime: (new Date).getTime(),
+							list: this.list
+						}
+					}).then(res => {
+						loader.close();
+						res = res.data;
+						if (res.code == 200) {
+							this.$message.success({
+								message: "成功",
+								duration: 1000
+							});
+						} else this.$confirm(res.message).then();
+					}).catch(err => {
+						loader.close();
+						this.$confirm(err.toString()).then();
+					})
+				}
 			}
 		}
 	}

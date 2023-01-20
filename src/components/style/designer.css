@@ -30,6 +30,17 @@ body{
 .action-bar .delete-btn:focus{
   color: #F56C6C;
 }
+.action-bar .home{
+	position: absolute;
+	left: 20px;
+	padding-right: 10px;
+	border-right: 1px solid #f1e8e8;
+	color: #c0ccda;
+}
+.action-bar .home:hover{
+	color: #f56c6c;
+	border-right: 1px solid #f1e8e8;
+}
 .component-block{
 	margin-left: 0;
 	position: absolute;
@@ -255,4 +266,7 @@ body{
 	position: absolute;
 	top: 12px;
 	left: 49px;
+}
+.el-rate{
+	display: inline-flex;
 }
