@@ -15,6 +15,13 @@
 		'target,title,type,usemap,value,width,wrap'
 	)
 
+	let childEle = {
+		'el-select': ['el-option'],
+		'el-checkbox-group': ['el-checkbox', 'el-checkbox-button'],
+		'el-radio-group': ['el-radio', 'el-radio-button'],
+		'el-collapse': ['el-collapse-item']
+	}
+
 	function makeMap(str, expectsLowerCase) {
 		const map = Object.create(null)
 		const list = str.split(',')
@@ -25,11 +32,11 @@
 			val => map[val.toLowerCase()] :
 			val => map[val]
 	}
-	
+
 	function vModel(self, dataObject) {
-	  dataObject.on.input = val => {
-	    self.$emit('input', val)
-	  }
+		dataObject.on.input = val => {
+			self.$emit('input', val)
+		}
 	}
 
 	export default {
@@ -56,10 +63,10 @@
 					dataObject.attrs[key] = val
 				}
 			})
-			vModel(this,dataObject);
-			if(typeof child !== "string" && child!=null){
+			vModel(this, dataObject);
+			if (typeof child !== "string" && child != null) {
 				let ans = [];
-				for(let ele of child){
+				for (let ele of child) {
 					let data = {
 						attrs: {},
 						props: {},
@@ -67,11 +74,16 @@
 						style: {}
 					}
 					data.attrs = ele;
-					ans.push(h("el-option",data,null))
+					if (conf.childAttr) data.attrs = Object.assign(data.attrs, conf.childAttr);
+					let childs = [];
+					if(ele.child){
+						for(let element of ele.child) childs.push(h(element.ele,null,element.child));
+					}
+					ans.push(h(childEle[conf.ele][conf.childIndex], data, childs));
 				}
-				child=ans;
+				child = ans;
 			}
-			return h(conf.ele, dataObject,child);
+			return h(conf.ele, dataObject, child);
 		},
 		props: {
 			confs: {

@@ -6,7 +6,7 @@
 				<i slot="prefix" class="el-input__icon el-icon-search"></i>
 			</el-input>
 		</div>
-		<temp-manager-list :key="item" :formList="formList"></temp-manager-list>
+		<temp-manager-list class="tempList" :key="item" :formList="formList"></temp-manager-list>
 	</div>
 </template>
 
@@ -48,7 +48,7 @@
 			searchTempName() {
 				let loader = this.$loading({
 					text: "正在搜索",
-					target: ".showForm"
+					target: ".tempList"
 				});
 				this.$axios({
 					url: `${this.host}/example/getTempByName?name=${this.searchName}`,

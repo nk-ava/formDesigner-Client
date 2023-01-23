@@ -1,47 +1,56 @@
-body{
-  margin:0px;
+body {
+	margin: 0px;
 }
+
 .container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
-.action-bar{
-  position: relative;
-  height: 42px;
-  text-align: right;
-  padding: 0 15px;
-  box-sizing: border-box;;
-  border: 1px solid #f1e8e8;
-  border-top: none;
-  border-left: none;
-  background: #ffffff;
+
+.action-bar {
+	position: relative;
+	height: 42px;
+	text-align: right;
+	padding: 0 15px;
+	box-sizing: border-box;
+	;
+	border: 1px solid #f1e8e8;
+	border-top: none;
+	border-left: none;
+	background: #ffffff;
 }
-.action-bar .el-button{
-  font-size: 18px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-  color:#409EFF
+
+.action-bar .el-button {
+	font-size: 18px;
+	vertical-align: middle;
+	position: relative;
+	top: -1px;
+	color: #409EFF
 }
-.action-bar .delete-btn{
-  color: #F56C6C;
+
+.action-bar .delete-btn {
+	color: #F56C6C;
 }
-.action-bar .delete-btn:focus{
-  color: #F56C6C;
+
+.action-bar .delete-btn:focus {
+	color: #F56C6C;
 }
-.action-bar .home{
+
+.action-bar .home {
 	position: absolute;
 	left: 20px;
 	padding-right: 10px;
 	border-right: 1px solid #f1e8e8;
 	color: #c0ccda;
 }
-.action-bar .home:hover{
+
+.action-bar .home:hover {
 	color: #f56c6c;
 	border-right: 1px solid #f1e8e8;
 }
-.component-block{
+
+.component-block {
 	margin-left: 0;
 	position: absolute;
 	left: 0;
@@ -49,23 +58,26 @@ body{
 	height: 100%;
 	border-right: 1px solid #f1e8e8;
 }
+
 .center-scrollbar {
-  margin-left: 25.5%;
-  height: calc(100vh - 42px);
-  overflow: hidden;
-  width: 74%;
-  border: 1px dashed #000;
-  margin-top: 5px;
-  box-sizing: border-box;
+	margin-left: 25.5%;
+	height: calc(100vh - 42px);
+	overflow: hidden;
+	width: 74%;
+	border: 1px dashed #000;
+	margin-top: 5px;
+	box-sizing: border-box;
 }
-.line{
+
+.line {
 	position: absolute;
 	background-color: #409EFF;
 	bottom: 0px;
 	height: 1px;
 	width: 100%;
 }
-.conf-header{
+
+.conf-header {
 	position: relative;
 	width: 100%;
 	height: 32px;
@@ -75,30 +87,35 @@ body{
 	font-size: 15px;
 	margin-bottom: 15px;
 }
-.empty-info{
+
+.empty-info {
 	position: absolute;
 	top: 0;
 	height: 100%;
 	width: 72%;
 	left: 28%;
 }
+
 .center-board-row {
-  padding: 5px 5px 0px 5px;
-  box-sizing: border-box;
+	padding: 5px 5px 0px 5px;
+	box-sizing: border-box;
 }
+
 .center-board-row .el-form {
-  height: calc(100vh - 69px);
+	height: calc(100vh - 69px);
 }
-.component-id{
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 12px;
-  color: #bbb;
-  display: inline-block;
-  margin: 0 6px;
+
+.component-id {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 12px;
+	color: #bbb;
+	display: inline-block;
+	margin: 0 6px;
 }
-.drawing-item-copy{
+
+.drawing-item-copy {
 	position: absolute;
 	top: -3px;
 	right: 8%;
@@ -109,19 +126,23 @@ body{
 	border-radius: 13px;
 	display: none;
 }
+
 .drawing-item-copy:hover {
 	background-color: blue;
 }
-.drawing-item-copy:hover .el-icon-copy-document{
+
+.drawing-item-copy:hover .el-icon-copy-document {
 	color: #fff;
 }
-.el-icon-copy-document{
+
+.el-icon-copy-document {
 	position: absolute;
 	top: 4px;
 	right: 4px;
 	color: blue;
 }
-.drawing-item-delete{
+
+.drawing-item-delete {
 	position: absolute;
 	top: -3px;
 	right: 3%;
@@ -132,49 +153,60 @@ body{
 	border-radius: 13px;
 	display: none;
 }
-.drawing-item-delete:hover{
+
+.drawing-item-delete:hover {
 	background-color: red;
 }
-.drawing-item-delete:hover .el-icon-delete{
+
+.drawing-item-delete:hover .el-icon-delete {
 	color: #fff;
 }
-.el-icon-delete{
+
+.el-icon-delete {
 	position: absolute;
 	top: 4px;
 	right: 4px;
 	color: red;
 }
-.drawing-item{
+
+.drawing-item {
 	position: absolute;
 	border: 1px dashed #000;
 }
-.drawing-item:hover .el-col .drawing-item-delete{
+
+.drawing-item:hover .el-col .drawing-item-delete {
 	display: inline;
 }
-.drawing-item:hover .el-col .drawing-item-copy{
+
+.drawing-item:hover .el-col .drawing-item-copy {
 	display: inline;
 }
-.drawing-item:hover .el-col .el-form-item{
+
+.drawing-item:hover .el-col .el-form-item {
 	background-color: #f1f1f1;
 }
-.left-div{
+
+.left-div {
 	position: absolute;
 	width: 75%;
 	overflow: hidden;
 	border-right: 1px solid #f1e8e8;
 }
-.right-board{
+
+.right-board {
 	position: absolute;
 	width: 25%;
 	right: 0;
 	height: 100%;
 }
-.editPage{
+
+.editPage {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 }
-.miniItem_o{
+
+.miniItem_o {
 	float: left;
 	width: 43%;
 	height: 35px;
@@ -186,10 +218,12 @@ body{
 	border: 1px solid #409EFF;
 	border-radius: 5px;
 }
-.miniItem_o:hover{
+
+.miniItem_o:hover {
 	border: 1px dashed #ff3131;
 }
-.miniItem_j{
+
+.miniItem_j {
 	float: left;
 	width: 43%;
 	height: 35px;
@@ -201,72 +235,95 @@ body{
 	border: 1px solid #409EFF;
 	border-radius: 5px;
 }
-.miniItem_j:hover{
+
+.miniItem_j:hover {
 	border: 1px dashed #F56C6C;
 }
-.text{
+
+.text {
 	font-size: 10px;
 }
-.text:hover{
-	color:#F56C6C;
+
+.text:hover {
+	color: #F56C6C;
 }
-.item-container{
+
+.item-container {
 	overflow: hidden;
 }
-.item-receiver{
+
+.item-receiver {
 	height: 100%;
 }
-.textMsg{
+
+.textMsg {
 	margin-left: 5%;
 	margin-top: 20px;
 	margin-bottom: 5px;
 	font-weight: bold;
 	font-size: 15px;
 }
-.form-item{
+
+.form-item {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
-	margin-top:24px;
-	margin-left:10px;
-	margin-right:10px;
+	margin-top: 24px;
+	margin-left: 10px;
+	margin-right: 10px;
 	border-radius: 5px;
 }
-.active-from-item .el-col .drawing-item-copy{
+
+.active-from-item .el-col .drawing-item-copy {
 	display: inline;
 }
-.active-from-item .el-col .drawing-item-delete{
+
+.active-from-item .el-col .drawing-item-delete {
 	display: inline
 }
-.active-from-item .el-col .el-form-item{
+
+.active-from-item .el-col .el-form-item {
 	background-color: #e6f2ff;
 }
-.active-from-item .el-col .component-id{
+
+.active-from-item .el-col .component-id {
 	color: #409eff;
 }
-.option-icon{
-	
-}
-.el-icon-remove-outline{
+
+.option-icon {}
+
+.el-icon-remove-outline {
 	color: red;
 }
-.logo{
+
+.logo {
 	position: absolute;
-	bottom:3px;
-	left:20px;
+	bottom: 3px;
+	left: 20px;
 	height: 35px;
 }
-.ele-logo{
+
+.ele-logo {
 	position: absolute;
-	bottom:3px;
+	bottom: 3px;
 	height: 35px;
 	left: 65px;
 }
-.action-bar .el-icon-plus{
+
+.action-bar .el-icon-plus {
 	position: absolute;
 	top: 12px;
 	left: 49px;
 }
-.el-rate{
+
+.el-rate {
 	display: inline-flex;
+}
+
+.el-collapse-item__header {
+	padding-left: 10px;
+}
+
+.el-collapse-item__wrap {
+	padding-left: 10px;
 }

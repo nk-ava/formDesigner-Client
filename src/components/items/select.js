@@ -7,10 +7,11 @@ export let select = {
 	showLabel:true,
 	multiple:false,
 	disabled:false,
-	value:"",
+	value:'',
 	size:"medium",
 	clearable:false,
 	placeholder:"请选择",
     required:false,
-	child:[{label:"选项1",value:"1"},{label:"选项2",value:"2"}]
+	child:[{label:"选项1",value:"1"},{label:"选项2",value:"2"}],
+	childIndex:0
 }

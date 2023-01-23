@@ -10,7 +10,13 @@ const components = [
 	'inputNumber',
 	'time',
 	'date',
-	'rate'
+	'rate',
+	'checkbox',
+	'radio',
+	'editor',
+	'colorpicker',
+	'collapse',
+	'qrcode'
 ]
 
 let cpms = [];

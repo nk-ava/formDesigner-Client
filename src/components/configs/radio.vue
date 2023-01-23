@@ -7,30 +7,36 @@
 			<el-form-item label="标签">
 				<el-input v-model="itemConf.title"></el-input>
 			</el-form-item>
-			<el-form-item label="是否多选">
-				<el-switch v-model="itemConf.multiple" @change="onMultiple"></el-switch>
+			<el-form-item label="显示标签">
+				<el-switch v-model="itemConf.showLabel"></el-switch>
+			</el-form-item>
+			<el-form-item label="是否必填">
+				<el-switch v-model="itemConf.required"></el-switch>
 			</el-form-item>
 			<el-form-item label="是否禁用">
 				<el-switch v-model="itemConf.disabled"></el-switch>
 			</el-form-item>
-			<el-form-item label="尺寸">
+			<el-form-item label="边框">
+				<el-switch v-model="itemConf.childAttr.border"></el-switch>
+			</el-form-item>
+			<el-form-item label="尺寸" v-show="itemConf.childAttr.border||itemConf.childIndex===1">
 				<el-select v-model="itemConf.size">
 					<el-option label="中" value="medium"></el-option>
 					<el-option label="小" value="small"></el-option>
 					<el-option label="迷你" value="mini"></el-option>
 				</el-select>
 			</el-form-item>
-			<el-form-item label="是否可清除">
-				<el-switch v-model="itemConf.clearable"></el-switch>
+			<el-form-item label="类型">
+				<el-radio-group v-model="itemConf.childIndex">
+					<el-radio-button :label="0">默认</el-radio-button>
+					<el-radio-button :label="1">按钮</el-radio-button>
+				</el-radio-group>
 			</el-form-item>
-			<el-form-item label="提示信息">
-				<el-input v-model="itemConf.placeholder"></el-input>
+			<el-form-item v-show="itemConf.childIndex===1" label="文本颜色">
+				<el-color-picker v-model="itemConf['text-color']"></el-color-picker>
 			</el-form-item>
-			<el-form-item label="是否必填">
-				<el-switch v-model="itemConf.required"></el-switch>
-			</el-form-item>
-			<el-form-item label="是否显示标签">
-				<el-switch v-model="itemConf.showLabel"></el-switch>
+			<el-form-item v-show="itemConf.childIndex" label="填充色">
+				<el-color-picker v-model="itemConf.fill"></el-color-picker>
 			</el-form-item>
 		</el-form>
 		<el-divider>选项</el-divider>
@@ -38,9 +44,8 @@
 			<div style="float: left;margin-top: 5px;">
 				<i class="el-icon-s-operation" />
 			</div>
-			<el-input v-model="item.label" placeholder="选项名" size="small" style="float: left;width: 42%;margin: 3px;" />
-			<el-input placeholder="选项值" size="small" :value="item.value" @input="setOptionValue(item, $event)"
-				style="float: left;width: 42%;margin: 3px;" />
+			<el-input v-model="item.label" placeholder="选项名" size="small"
+				style="float: left;width: 80%;margin-left: 4%;margin-right:4%;margin-bottom:5px" />
 			<div style="float: left;margin-top: 5px;" @click="itemConf.child.splice(index, 1)">
 				<i class="el-icon-remove-outline" />
 			</div>
@@ -55,29 +60,18 @@
 
 <script>
 	export default {
-		name: 'selectConf',
+		name: 'radioConf',
 		props: {
 			itemConf: {
 				type: Object,
-				default: {}
+				default: () => ({})
 			}
 		},
 		methods: {
-			setOptionValue(item, val) {
-				item.value = ""+val;
-			},
 			addSelectItem() {
 				this.itemConf.child.push({
-					label: '',
-					value: ''
+					label: ''
 				})
-			},
-			onMultiple(){
-				if(this.itemConf.multiple){
-					this.itemConf.value = [];
-				}else{
-					this.itemConf.value = "";
-				}
 			}
 		}
 	}

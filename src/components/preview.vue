@@ -76,11 +76,13 @@
 				}).then(res => {
 					loader.close();
 					res = res.data;
-					if (res.code == 200) this.$message.success({
-						message: "保存成功",
-						duration: 1000
-					});
-					else this.$confirm(res.message).then();
+					if (res.code == 200) {
+						this.$emit("success");
+						this.$message.success({
+							message: "保存成功",
+							duration: 1000
+						});
+					} else this.$confirm(res.message).then();
 				}).catch(err => {
 					loader.close();
 					this.$confirm(err.toString()).then();
@@ -107,6 +109,7 @@
 					loader.close();
 					res = res.data;
 					if (res.code == 200) {
+						this.$emit("success");
 						this.$message.success({
 							message: "成功",
 							duration: 1000

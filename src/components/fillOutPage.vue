@@ -1,7 +1,7 @@
 <template>
 	<div class="fillContainer">
 		<i class="el-icon-close" @click="goBack"></i>
-		<preview :listOrigin="list" :tempId="temp_id" :showSub="true" :look="false" :formId="form_id" :save="form_id==null?true:false"></preview>
+		<preview @success="goBack" :listOrigin="list" :tempId="temp_id" :showSub="true" :look="false" :formId="form_id" :save="form_id==null?true:false"></preview>
 	</div>
 </template>
 

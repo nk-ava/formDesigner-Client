@@ -10,10 +10,16 @@ import {inputNumber} from "./inputNumber.js";
 import {timePicker} from "./timePicker.js";
 import {date} from "./date.js";
 import {rate} from "./rate.js";
+import {checkbox} from "./checkbox.js";
+import {radio} from "./radio.js";
+import {editor} from "./editor.js";
+import {colorpicker} from "./colorpicker.js";
+import {collapse} from "./collapse.js";
+import {qrcode} from "./qrcode.js";
 
 export let formComp = [
 	select,Switch,input,slider,textarea,inputNumber,timePicker,
-	date,rate
+	date,rate,checkbox,radio,editor,colorpicker,collapse,qrcode,
 ]
 
 export let supportComp = [

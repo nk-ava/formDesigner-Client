@@ -5,5 +5,17 @@ export let checkbox={
 	ele:'el-checkbox-group',
 	title:'复选框',
 	showLabel:true,
-	child:[{label:'选项一',value:1},{label:'选项二',value:2}]
+	required:false,
+	disabled:false,
+	size:'medium',
+	min:0,
+	max:5,
+	'text-color':"#ffffff",
+	fill:"#409EFF",
+	childIndex:0,
+	value:[],
+	child:[{label:'选项一'},{label:'选项二'}],
+	childAttr:{
+		border:false
+	}
 }
