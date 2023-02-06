@@ -37,10 +37,13 @@
 			<el-switch v-model="itemConf.disabled"></el-switch>
 		</el-form-item>
 		<el-form-item label="图标">
-			<el-input v-model="itemConf.icon" placeholder="请选择图标">
-				<el-button slot="append" icon="el-icon-picture"></el-button>
+			<el-input v-model="itemConf.icon" placeholder="请选择图标" readonly>
+				<template slot="append">
+					<i class="el-icon-picture" style="cursor: pointer;" @click="handlerSelectIcon" />
+				</template>
 			</el-input>
 		</el-form-item>
+		<icon-dialog v-model="itemConf.icon" :visible.sync="iconDialogVisible" />
 	</el-form>
 </template>
 <script>
@@ -49,6 +52,16 @@
 		props: {
 			itemConf: Object,
 			default: {}
+		},
+		data(){
+			return {
+				iconDialogVisible: false
+			}
+		},
+		methods: {
+			handlerSelectIcon() {
+				this.iconDialogVisible = true
+			}
 		}
 	}
 </script>

@@ -16,7 +16,9 @@ const components = [
 	'editor',
 	'colorpicker',
 	'collapse',
-	'qrcode'
+	'qrcode',
+	'text',
+	'barcode'
 ]
 
 let cpms = [];

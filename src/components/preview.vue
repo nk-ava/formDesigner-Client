@@ -67,7 +67,7 @@
 				};
 				if (this.tempId != null) data.tempId = this.tempId;
 				this.$axios({
-					url: `${this.host}/example/saveForm`,
+					url: `/example/saveForm`,
 					method: "post",
 					headers: {
 						'Content-Type': "application/json"
@@ -99,7 +99,7 @@
 					list: this.list
 				}
 				this.$axios({
-					url: `${this.host}/example/updateFormById`,
+					url: `/example/updateFormById`,
 					method: 'post',
 					headers: {
 						'Content-Type': 'application/json'

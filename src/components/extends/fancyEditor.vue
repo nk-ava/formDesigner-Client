@@ -84,7 +84,9 @@
 		},
 		mounted() {
 			let lts = this.$parent.$listeners;
-			if(!Object.keys(lts).includes("input")) this.$refs.myQuillEditor.quill.enable(false);
+			if (!Object.keys(lts).includes("input")) this.$refs.myQuillEditor.quill.enable(false);
+			let ele = document.querySelector(".ql-editor");
+			if(ele.clientHeight<=300) ele.style.height = "300px";
 		},
 		props: {
 			value: {
@@ -137,10 +139,6 @@
 <style>
 	.quill-container {
 		border: 1px solid red;
-	}
-
-	.ql-editor {
-		height: 300px;
 	}
 
 	.text-number {

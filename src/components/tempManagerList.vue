@@ -139,7 +139,7 @@
 					target: ".showForm"
 				});
 				this.$axios({
-					url: `${this.host}/example/getFormById?id=${id}`,
+					url: `/example/getFormById?id=${id}`,
 					method: 'get'
 				}).then(res => {
 					loader.close();
@@ -161,7 +161,7 @@
 					target: '.showForm'
 				});
 				this.$axios({
-					url: `${this.host}/example/deleteFormById?id=${id}`,
+					url: `/example/deleteFormById?id=${id}`,
 					method: 'get'
 				}).then(res => {
 					res = res.data;
@@ -189,7 +189,7 @@
 					target: ".showForm"
 				});
 				this.$axios({
-					url: `${this.host}/example/getTempById?id=${id}`,
+					url: `/example/getTempById?id=${id}`,
 					method: 'get'
 				}).then(res => {
 					this.compList = res.data;
@@ -210,7 +210,7 @@
 					target: ".showForm"
 				});
 				this.$axios({
-					url: `${this.host}/example/getFormById?id=${id}`,
+					url: `/example/getFormById?id=${id}`,
 					method: 'get'
 				}).then(res => {
 					this.compList = res.data;
@@ -232,7 +232,7 @@
 						target: ".showForm"
 					});
 					this.$axios({
-						url: `${this.host}/example/deleteTempById?id=${id}`,
+						url: `/example/deleteTempById?id=${id}`,
 						method: 'get'
 					}).then(res => {
 						loader.close();
@@ -253,7 +253,7 @@
 					target: ".showForm"
 				});
 				this.$axios({
-					url: `${this.host}/example/getTempById?id=${id}`,
+					url: `/example/getTempById?id=${id}`,
 					method: 'get'
 				}).then(res => {
 					loader.close();
@@ -275,7 +275,7 @@
 					target: ".showForm"
 				});
 				this.$axios({
-					url: `${this.host}/example/getTempById?id=${id}`,
+					url: `/example/getTempById?id=${id}`,
 					method: 'get'
 				}).then(res => {
 					loader.close();
@@ -297,7 +297,7 @@
 					target: ".showRename"
 				});
 				this.$axios({
-					url: `${this.host}/example/updateTempName?id=${this.tempId}&name=${this.tempName}`,
+					url: `/example/updateTempName?id=${this.tempId}&name=${this.tempName}`,
 					method: "get"
 				}).then(res => {
 					res = res.data;

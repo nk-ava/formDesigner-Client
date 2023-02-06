@@ -131,7 +131,7 @@
 				});
 				if (this.tempId == null) {
 					this.$axios({
-						url: `${this.host}/example/saveTemp`,
+						url: `/example/saveTemp`,
 						headers: {
 							'Content-Type': "application/json"
 						},
@@ -157,7 +157,7 @@
 					})
 				} else {
 					this.$axios({
-						url: `${this.host}/example/updateTempById`,
+						url: `/example/updateTempById`,
 						headers: {
 							'Content-Type': "application/json"
 						},

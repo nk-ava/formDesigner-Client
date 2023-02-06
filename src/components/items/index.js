@@ -16,12 +16,15 @@ import {editor} from "./editor.js";
 import {colorpicker} from "./colorpicker.js";
 import {collapse} from "./collapse.js";
 import {qrcode} from "./qrcode.js";
+import {text} from "./text.js";
+import {barcode} from "./barcode.js";
 
 export let formComp = [
 	select,Switch,input,slider,textarea,inputNumber,timePicker,
 	date,rate,checkbox,radio,editor,colorpicker,collapse,qrcode,
+	barcode
 ]
 
 export let supportComp = [
-	button,divider,link
+	button,divider,link,text
 ]

@@ -35,7 +35,7 @@
 					target: ".tempMng"
 				});
 				this.$axios({
-					url: `${this.host}/example/getAllForm`,
+					url: `/example/getAllForm`,
 					method: 'get'
 				}).then(res => {
 					this.formList = res.data;
@@ -51,7 +51,7 @@
 					target: ".tempList"
 				});
 				this.$axios({
-					url: `${this.host}/example/getTempByName?name=${this.searchName}`,
+					url: `/example/getTempByName?name=${this.searchName}`,
 					method: 'get'
 				}).then(res => {
 					loader.close();

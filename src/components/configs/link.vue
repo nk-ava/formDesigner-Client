@@ -26,9 +26,10 @@
 		</el-form-item>
 		<el-form-item label="图标">
 			<el-input v-model="itemConf.icon" placeholder="请选择图标">
-				<el-button slot="append" icon="el-icon-picture"></el-button>
+				<el-button slot="append" icon="el-icon-picture" @click="showIconDialog=true"></el-button>
 			</el-input>
 		</el-form-item>
+		<icon-dialog v-model="itemConf.icon" :visible.sync="showIconDialog" />
 	</el-form>
 </template>
 
@@ -39,6 +40,11 @@
 			itemConf: {
 				type: Object,
 				default: () => ({})
+			}
+		},
+		data() {
+			return{
+				showIconDialog:false
 			}
 		}
 	}
