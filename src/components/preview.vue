@@ -8,9 +8,22 @@
 			</el-form-item>
 		</template>
 		<el-row type="flex" justify="center" v-if="showSub">
-			<el-button v-if="save" type="primary" @click="submitForm">提交</el-button>
+			<el-button v-if="save" type="primary" @click="showSave">提交</el-button>
 			<el-button v-if="!save" type="primary" @click="updateForm">提交</el-button>
 		</el-row>
+		<el-dialog :visible.sync="showSaveInfo" title="保存表单">
+			<el-form label-width="80px">
+				<el-form-item label="表单名称">
+					<el-input v-model="formName"></el-input>
+				</el-form-item>
+				<el-form-item label="描述">
+					<el-input type="textarea" v-model="detail" :rows="5"></el-input>
+				</el-form-item>
+				<el-row type="flex" justify="center">
+					<el-button type="primary" @click="submitForm">提交</el-button>
+				</el-row>
+			</el-form>
+		</el-dialog>
 	</el-form>
 </template>
 
@@ -23,7 +36,10 @@
 		},
 		data() {
 			return {
-				list: JSON.parse(JSON.stringify(this.listOrigin))
+				list: JSON.parse(JSON.stringify(this.listOrigin)),
+				formName: '',
+				detail: '',
+				showSaveInfo: false
 			}
 		},
 		props: {
@@ -53,6 +69,22 @@
 			}
 		},
 		methods: {
+			checkList() {
+				for (let ele of this.list) {
+					if (ele.required && (ele.value && Object.keys(ele.value).toString()=="" || !ele.value)) {
+						this.$message.error({
+							message: `${ele.title}为必填字段`,
+							duration: 1000
+						})
+						return false;
+					}
+				}
+				return true;
+			},
+			showSave(){
+				if(!this.checkList()) return;
+				this.showSaveInfo=true;
+			},
 			changeValue(origin, val) {
 				this.$set(origin, 'value', val)
 			},
@@ -63,11 +95,13 @@
 				});
 				let data = {
 					subTime: (new Date).getTime(),
-					list: this.list
+					list: this.list,
+					formName: this.formName,
+					detail: this.detail
 				};
 				if (this.tempId != null) data.tempId = this.tempId;
 				this.$axios({
-					url: `/example/saveForm`,
+					url: `/FORM/saveForm`,
 					method: "post",
 					headers: {
 						'Content-Type': "application/json"
@@ -89,6 +123,7 @@
 				})
 			},
 			updateForm() {
+				if(!this.checkList()) return;
 				let loader = this.$loading({
 					text: '正在保存',
 					target: '.preview_sub'
@@ -99,7 +134,7 @@
 					list: this.list
 				}
 				this.$axios({
-					url: `/example/updateFormById`,
+					url: `/FORM/updateFormById`,
 					method: 'post',
 					headers: {
 						'Content-Type': 'application/json'
