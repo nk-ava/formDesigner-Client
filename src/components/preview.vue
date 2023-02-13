@@ -1,12 +1,15 @@
 <template>
 	<el-form class="preview_sub">
 		<template v-for="model in list">
-			<el-form-item :label="model.showLabel?model.title:''" :required="model.required" style="margin-bottom:5px;"
-				:label-width="model.showLabel?'80px':'10px'" class="form-item">
-				<render v-if="!look" :confs="model" @input="changeValue(model,$event)" />
-				<render v-if="look" :confs="model" />
-			</el-form-item>
+			<el-row :type="model.compAlign==undefined?'':'flex'" :justify="model.compAlign||''">
+				<el-form-item :label="model.showLabel?model.title:''" :required="model.required"
+					style="margin-bottom:5px;" :label-width="model.showLabel?'80px':'10px'" class="form-item">
+					<render v-if="!look" :confs="model" @input="changeValue(model,$event)" />
+					<render v-if="look" :confs="model" />
+				</el-form-item>
+			</el-row>
 		</template>
+		<el-divider v-if="showSub"></el-divider>
 		<el-row type="flex" justify="center" v-if="showSub">
 			<el-button v-if="save" type="primary" @click="showSave">提交</el-button>
 			<el-button v-if="!save" type="primary" @click="updateForm">提交</el-button>
@@ -71,7 +74,7 @@
 		methods: {
 			checkList() {
 				for (let ele of this.list) {
-					if (ele.required && (ele.value && Object.keys(ele.value).toString()=="" || !ele.value)) {
+					if (ele.required && (ele.value && Object.keys(ele.value).toString() == "" || !ele.value)) {
 						this.$message.error({
 							message: `${ele.title}为必填字段`,
 							duration: 1000
@@ -81,9 +84,9 @@
 				}
 				return true;
 			},
-			showSave(){
-				if(!this.checkList()) return;
-				this.showSaveInfo=true;
+			showSave() {
+				if (!this.checkList()) return;
+				this.showSaveInfo = true;
 			},
 			changeValue(origin, val) {
 				this.$set(origin, 'value', val)
@@ -123,7 +126,7 @@
 				})
 			},
 			updateForm() {
-				if(!this.checkList()) return;
+				if (!this.checkList()) return;
 				let loader = this.$loading({
 					text: '正在保存',
 					target: '.preview_sub'

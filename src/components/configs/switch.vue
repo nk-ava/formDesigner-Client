@@ -14,6 +14,13 @@
 		<el-form-item label="是否禁用">
 			<el-switch v-model="itemConf.disabled"></el-switch>
 		</el-form-item>
+		<el-form-item label="对齐方式">
+			<el-radio-group v-model="itemConf.compAlign">
+				<el-radio-button label="start">左对齐</el-radio-button>
+				<el-radio-button label="center">居中</el-radio-button>
+				<el-radio-button label="end">右对齐</el-radio-button>
+			</el-radio-group>
+		</el-form-item>
 		<el-form-item label="打开时文本">
 			<el-input v-model="itemConf['active-text']"></el-input>
 		</el-form-item>

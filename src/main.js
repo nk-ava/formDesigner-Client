@@ -32,6 +32,7 @@ new Vue({
 				currentPage: 1,
 				pageSize: 10
 			},
+			key:''
 		}
 	},
   render: h => h(App)

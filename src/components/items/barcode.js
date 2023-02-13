@@ -9,6 +9,7 @@ export let barcode = {
 	background:'#fff',
 	barWidth:2,
 	barHeight:30,
+	compAlign:'start',
 	displayValue:true,
 	fontSize:12,
 	text:'formDesigner'

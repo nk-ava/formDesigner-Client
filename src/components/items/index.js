@@ -18,11 +18,12 @@ import {collapse} from "./collapse.js";
 import {qrcode} from "./qrcode.js";
 import {text} from "./text.js";
 import {barcode} from "./barcode.js";
+import { upload } from "./upload.js";
 
 export let formComp = [
 	select,Switch,input,slider,textarea,inputNumber,timePicker,
 	date,rate,checkbox,radio,editor,colorpicker,collapse,qrcode,
-	barcode
+	barcode,upload
 ]
 
 export let supportComp = [

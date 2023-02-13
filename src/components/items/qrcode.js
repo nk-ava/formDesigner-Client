@@ -7,6 +7,7 @@ export let qrcode = {
 	showLabel:true,
 	text:'formDesigner',
 	size:80,
+	compAlign:'start',
 	colorDark:'#000',
 	colorLight:'#fff'
 }

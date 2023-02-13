@@ -18,7 +18,8 @@ const components = [
 	'collapse',
 	'qrcode',
 	'text',
-	'barcode'
+	'barcode',
+	'att'
 ]
 
 let cpms = [];

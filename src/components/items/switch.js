@@ -7,6 +7,7 @@ export let Switch = {
 	compName:'开关',
 	width:"80px",
 	value:false,
+	compAlign:'start',
 	'active-text':"",
 	'inactive-text':"",
 	'active-color':"#409EFF",

@@ -3,6 +3,7 @@ export let button = {
 	compIcon:'button',
 	compName:'按钮',
 	showLabel:false,
+	compAlign:'start',
 	ele:"el-button",
 	child:"按钮",
 	size:"",

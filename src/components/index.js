@@ -3,6 +3,7 @@ import genQRCode from "./extends/genQrCode.vue";
 import fancyText from "./extends/fancyText.vue";
 import fancyBarCode from "./extends/fancyBarCode.vue";
 import iconDialog from "./iconDialog.vue";
+import myUpload from "./extends/myUpload.vue";
 
 export default {
 	install: function(Vue) {
@@ -11,5 +12,6 @@ export default {
 		Vue.component("fancy-text",fancyText);
 		Vue.component("fancy-bar-code",fancyBarCode);
 		Vue.component("icon-dialog",iconDialog);
+		Vue.component("my-upload",myUpload);
 	}
 }

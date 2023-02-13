@@ -9,6 +9,13 @@
 		<el-form-item label="显示标签">
 			<el-switch v-model="itemConf.showLabel"></el-switch>
 		</el-form-item>
+		<el-form-item label="对齐方式">
+			<el-radio-group v-model="itemConf.compAlign">
+				<el-radio-button label="start">左对齐</el-radio-button>
+				<el-radio-button label="center">居中</el-radio-button>
+				<el-radio-button label="end">右对齐</el-radio-button>
+			</el-radio-group>
+		</el-form-item>
 		<el-form-item label="信息">
 			<el-input v-model="itemConf.text"></el-input>
 		</el-form-item>

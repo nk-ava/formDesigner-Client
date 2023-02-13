@@ -7,6 +7,7 @@ export let link={
 	child:'链接',
 	type:'primary',
 	underline:true,
+	compAlign:'start',
 	disabled:false,
 	href:'',
 	icon:''

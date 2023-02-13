@@ -19,17 +19,20 @@
 		render(){
 			let className = this.model.id===this.activeItem.id?'drawing-item active-from-item':'drawing-item';
 			let {copyItem,deleteItem,activeItemChange} = this.$listeners;
+			let rowType = this.model.compAlign==undefined?"":"flex";
+			let align = this.model.compAlign||"";
 			return (
 			    <el-row class={className} nativeOnClick={event=>{activeItemChange(this.model);event.stopPropagation();}}>
 					<el-col span={24}>
 			      <span class="component-id">{this.model.id}</span>
+						<el-row type={rowType} justify={align} class="form-item">
 			      <el-form-item label={this.model.showLabel?this.model.title:''}
 					required={this.model.required}
 					style="margin-bottom:5px;" 
-					label-width={this.model.showLabel?'80px':'10px'}
-					class="form-item">
+					label-width={this.model.showLabel?'80px':'10px'}>
 			        <render confs={this.model} onInput={ event => {this.$set(this.model, 'value', event)}}/>
-			      </el-form-item>
+						</el-form-item>
+			      </el-row>
 				  <span class="drawing-item-copy" title="复制" onClick={event => {copyItem(this.model); event.stopPropagation();}}>
 				    <i class="el-icon-copy-document" />
 				  </span>
