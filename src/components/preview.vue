@@ -74,7 +74,7 @@
 		methods: {
 			checkList() {
 				for (let ele of this.list) {
-					if (ele.required && (ele.value && Object.keys(ele.value).toString() == "" || !ele.value)) {
+					if (ele.required && ((ele.value&&ele.value.toString()=="") || !ele.value)) {
 						this.$message.error({
 							message: `${ele.title}为必填字段`,
 							duration: 1000
