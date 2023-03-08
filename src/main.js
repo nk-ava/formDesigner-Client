@@ -14,7 +14,7 @@ import "./assets/iconfont-plus/iconfont.css"
 import Plugins from "./components/index.js"
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
-axios.defaults.baseURL ='http://localhost:8081'
+axios.defaults.baseURL ='http://81.68.210.170:8081'
 Vue.use(ElementUI);
 Vue.use(Plugins);
 new Vue({

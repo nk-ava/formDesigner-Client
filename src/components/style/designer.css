@@ -170,7 +170,7 @@ body {
 }
 
 .drawing-item {
-	position: absolute;
+	position: relative;
 	border: 1px dashed #000;
 }
 
