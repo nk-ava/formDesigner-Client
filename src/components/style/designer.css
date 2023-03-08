@@ -328,3 +328,7 @@ body {
 .el-collapse-item__wrap {
 	padding-left: 10px;
 }
+
+.el-upload-list__item-thumbnail{
+	object-fit: cover;
+}

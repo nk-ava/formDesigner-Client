@@ -1,5 +1,5 @@
 <template>
-	<el-upload :action="url" :on-success="handleSuccess" :file-list="fileList" :on-preview="handlePreview"
+	<el-upload action="http://81.68.210.170:8081/FORM/upload" :on-success="handleSuccess" :file-list="fileList" :on-preview="handlePreview"
 		:on-error="handleError" :on-remove="handleRemove" :disabled="disabled" :limit="limit" :on-exceed="handleExceed"
 		:list-type="listStyle" :accept="acceptType">
 		<el-button icon="el-icon-upload" size="small" type="primary">点击上传</el-button>
@@ -12,13 +12,12 @@
 		name: 'myUpload',
 		data() {
 			return {
-				fileList: this.value,
-				url: `https://demo.tduckapp.com/form/file/upload/${this.$root.key}`
+				fileList: this.value
 			}
 		},
 		mounted() {
 			let lts = this.$parent.$listeners;
-			if (!Object.keys(lts).includes("input")) this.disabled=true;
+			if (!Object.keys(lts).includes("input")) this.disabled = true;
 		},
 		props: {
 			value: {
@@ -60,7 +59,7 @@
 			handleSuccess(res, file, fileList) {
 				this.fileList.push({
 					name: file.name,
-					url: res.data,
+					url: res.message,
 					uid: file.uid
 				});
 			},
