@@ -302,25 +302,11 @@
 				})
 			},
 			editForm(id) {
-				let loader = this.$loading({
-					text: "请稍后",
-					target: ".showForm"
-				});
-				this.$axios({
-					url: `/FORM/getFormById?id=${id}`,
-					method: 'get'
-				}).then(res => {
-					loader.close();
-					this.$router.push({
-						name: 'fillOutPage',
-						params: {
-							list: res.data,
-							form_id: id
-						}
-					});
-				}).catch(err => {
-					loader.close();
-					this.$confirm(err.toString()).then();
+				this.$router.push({
+					name: 'fillOutPage',
+					query: {
+						formId: id
+					}
 				});
 			},
 			previewForm(id, name) {
@@ -345,26 +331,12 @@
 				});
 			},
 			fillOutTemp(id) {
-				let loader = this.$loading({
-					text: "请稍后",
-					target: ".showForm"
-				});
-				this.$axios({
-					url: `/FORM/getTempById?id=${id}`,
-					method: 'get'
-				}).then(res => {
-					loader.close();
-					this.$router.push({
-						name: 'fillOutPage',
-						params: {
-							list: res.data,
-							temp_id: id
-						}
-					});
-				}).catch(err => {
-					loader.close();
-					this.$confirm(err.toString()).then();
-				});
+				this.$router.push({
+					name: 'fillOutPage',
+					query: {
+						tempId: id
+					}
+				})
 			},
 			tempRename() {
 				let loader = this.$loading({
@@ -540,7 +512,8 @@
 	.headerBg {
 		background: #eee !important;
 	}
-	.el-table__fixed-right-patch{
+
+	.el-table__fixed-right-patch {
 		background-color: #eeeeee !important;
 	}
 </style>

@@ -1,8 +1,8 @@
 <template>
 	<div class="fillContainer">
 		<el-row type="flex" justify="end"><i class="el-icon-close" @click="goBack"></i></el-row>
-		<preview @success="goBack" :listOrigin="list" :tempId="temp_id" :showSub="true" :look="false" :formId="form_id"
-			:save="form_id==null?true:false"></preview>
+		<preview v-if="ready" @success="goBack" :listOrigin="list" :tempId="temp_id" :showSub="true" :look="false"
+			:formId="form_id" :save="form_id==null?true:false"></preview>
 	</div>
 </template>
 
@@ -11,18 +11,15 @@
 
 	export default {
 		name: 'fillOut',
-		props: {
-			list: {
-				type: Array,
-				default: () => ([])
-			},
-			temp_id: {
-				type: String,
-				default: null
-			},
-			form_id: {
-				type: String,
-				default: null
+		created() {
+			this.getList();
+		},
+		data() {
+			return {
+				list: [],
+				temp_id: null,
+				form_id: null,
+				ready: false
 			}
 		},
 		components: {
@@ -31,6 +28,42 @@
 		methods: {
 			goBack() {
 				this.$router.back();
+			},
+			getList() {
+				if (this.$route.query.tempId) {
+					this.temp_id = this.$route.query.tempId;
+					let loader = this.$loading({
+						text: "请稍后"
+					});
+					this.$axios({
+						url: `/FORM/getTempById?id=${this.temp_id}`,
+						method: 'get'
+					}).then(res => {
+						loader.close();
+						res = res.data;
+						this.list = res;
+						this.ready = true;
+					}).catch(err => {
+						loader.close();
+						this.$confirm(err.toString()).then();
+					});
+				} else if (this.$route.query.formId) {
+					this.form_id = this.$route.query.formId;
+					let loader = this.$loading({
+						text: "请稍后"
+					});
+					this.$axios({
+						url: `/FORM/getFormById?id=${this.form_id}`,
+						method: 'get'
+					}).then(res => {
+						loader.close();
+						this.list = res.data;
+						this.ready = true;
+					}).catch(err => {
+						loader.close();
+						this.$confirm(err.toString()).then();
+					});
+				}
 			}
 		}
 	}

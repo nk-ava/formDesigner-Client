@@ -48,7 +48,7 @@
 		props: {
 			listOrigin: {
 				type: Array,
-				default: []
+				default: ()=>([])
 			},
 			tempId: {
 				default: null,
